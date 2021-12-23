@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.js"></script>
+<div id="calendar"></div>
+
+
+<script>
+	$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        defaultDate: '2020-06-11',
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end) {
+            var title = prompt('Event Title:');
+            var eventData;
+            if (title) {
+                eventData = {
+                    title: title,
+                    start: start,
+                    end: end
+                };
+                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+            }
+            $('#calendar').fullCalendar('unselect');
+        },
+        
+    });
+
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>
